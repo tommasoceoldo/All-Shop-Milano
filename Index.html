@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALL SHOP MILANO - Oggetti Firmati</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        header {
+            background-color: #000000;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 2px solid #CC7722;
+            position: relative;
+        }
+
+        .main-title {
+            color: #CC7722;
+            font-size: 3.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .subtitle {
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .back-button {
+            color: #CC7722;
+            text-decoration: none;
+            font-size: 1rem;
+            position: absolute;
+            left: 20px;
+            top: 30px;
+            padding: 8px 15px;
+            border: 1px solid #CC7722;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #CC7722;
+            color: #000000;
+        }
+
+        /* PAGINA PRINCIPALE */
+        .products {
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .product-card {
+            background: #1a1a1a;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            max-width: 400px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: #CC7722;
+            box-shadow: 0 10px 20px rgba(204, 119, 34, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            max-width: 300px;
+            height: 250px;
+            object-fit: contain;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .product-name {
+            color: #CC7722;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .product-brand {
+            color: #ffffff;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .product-price {
+            color: #CC7722;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .click-hint {
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        /* PAGINA DETTAGLIO */
+        .product-detail {
+            display: flex;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .image-container {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .detail-image {
+            width: 100%;
+            max-width: 500px;
+            height: 400px;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+            border-radius: 10px;
+        }
+
+        .detail-image:hover {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            flex: 1;
+            text-align: center;
+            padding: 30px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            border: 1px solid #333;
+        }
+
+        .detail-name {
+            color: #CC7722;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .detail-brand {
+            color: #ffffff;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-description {
+            color: #cccccc;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .detail-price {
+            color: #CC7722;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .order-button {
+            background-color: #CC7722;
+            color: #000000;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .order-button:hover {
+            background-color: #e68a33;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(204, 119, 34, 0.3);
+        }
+
+        .whatsapp-button {
+            background-color: #25D366;
+            color: #000000;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .whatsapp-button:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        /* MODAL WHATSAPP */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #CC7722;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .modal h2 {
+            color: #CC7722;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background: #000000;
+            color: #ffffff;
+            font-size: 16px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #CC7722;
+        }
+
+        .close-modal {
+            background: #CC7722;
+            color: #000000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .send-whatsapp {
+            background: #25D366;
+            color: #000000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #000000;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 2px solid #CC7722;
+            margin-top: 50px;
+        }
+
+        .instagram-link {
+            color: #CC7722;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border: 1px solid #CC7722;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .instagram-link:hover {
+            background-color: #CC7722;
+            color: #000000;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+            color: #888;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .product-detail {
+                flex-direction: column;
+            }
+            
+            .back-button {
+                position: relative;
+                left: 0;
+                top: 0;
+                margin-bottom: 20px;
+                display: inline-block;
+            }
+            
+            .main-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* NASCONDI SEZIONI */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- PAGINA PRINCIPALE -->
+    <div id="homePage">
+        <header>
+            <h1 class="main-title">ALL SHOP MILANO</h1>
+            <p class="subtitle">Oggetti Firmati di Alta Qualità - Milano</p>
+        </header>
+
+        <section class="products">
+            <a href="javascript:void(0)" class="product-card" onclick="showProductDetail()">
+                <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MTJV3?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1694014871985" alt="AirPods Pro" class="product-image">
+                <h3 class="product-name">AirPods Pro</h3>
+                <p class="product-brand">Apple</p>
+                <p class="product-price">€ 199,00</p>
+                <p class="click-hint">Clicca per maggiori dettagli</p>
+            </a>
+        </section>
+
+        <footer>
+            <a href="https://www.instagram.com/allshopmilano?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="instagram-link" target="_blank">
+                📱 @allshopmilano
+            </a>
+            <div class="contact-info">
+                <p>ALL SHOP MILANO - Vendita oggetti firmati</p>
+                <p>📍 Milano | 📧 info@allshopmilano.com</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- PAGINA DETTAGLIO -->
+    <div id="detailPage" class="hidden">
+        <header>
+            <a href="javascript:void(0)" class="back-button" onclick="showHomePage()">← Torna indietro</a>
+            <h1 class="main-title">ALL SHOP MILANO</h1>
+        </header>
+
+        <section class="product-detail">
+            <div class="image-container">
+                <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MTJV3?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1694014871985" alt="AirPods Pro" class="detail-image">
+            </div>
+            
+            <div class="product-info">
+                <h2 class="detail-name">AirPods Pro</h2>
+                <p class="detail-brand">Apple</p>
+                <p class="product-description">AirPods Pro offrono un'esperienza audio rivoluzionaria con cancellazione attiva del rumore, trasparenza e suono di alta qualità. Impermeabili e con custodia di ricarica wireless.</p>
+                <p class="detail-price">€ 199,00</p>
+                
+                <button class="order-button" onclick="openWhatsAppModal()">Ordina Ora</button>
+                <button class="whatsapp-button" onclick="openWhatsAppModal()">
+                    <i class="fab fa-whatsapp"></i> Ordina via WhatsApp
+                </button>
+            </div>
+        </section>
+
+        <footer>
+            <a href="https://www.instagram.com/allshopmilano?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="instagram-link" target="_blank">
+                📱 @allshopmilano
+            </a>
+            <div class="contact-info">
+                <p>ALL SHOP MILANO - Vendita oggetti firmati</p>
+                <p>📍 Milano | 📧 info@allshopmilano.com</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- MODAL WHATSAPP -->
+    <div id="whatsappModal" class="modal">
+        <div class="modal-content">
+            <h2>📦 Ordina AirPods Pro</h2>
+            <form id="orderForm">
+                <div class="form-group">
+                    <label for="nome">👤 Nome e Cognome *</label>
+                    <input type="text" id="nome" name="nome" required placeholder="Inserisci il tuo nome completo">
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono">📞 Numero di Telefono *</label>
+                    <input type="tel" id="telefono" name="telefono" required placeholder="Inserisci il tuo numero">
+                </div>
+
+                <div class="form-group">
+                    <label for="indirizzo">📍 Indirizzo di Consegna *</label>
+                    <textarea id="indirizzo" name="indirizzo" required rows="3" placeholder="Via, Civico, Città, CAP"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="quantita">🔢 Quantità</label>
+                    <select id="quantita" name="quantita">
+                        <option value="1">1 pezzo</option>
+                        <option value="2">2 pezzi</option>
+                        <option value="3">3 pezzi</option>
+                        <option value="4">4 pezzi</option>
+                        <option value="5+">5+ pezzi (specifica nelle note)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="note">📝 Note aggiuntive</label>
+                    <textarea id="note" name="note" rows="3" placeholder="Colori preferiti, orari di consegna, ecc."></textarea>
+                </div>
+
+                <div class="modal-buttons">
+                    <button type="button" class="close-modal" onclick="closeWhatsAppModal()">Annulla</button>
+                    <button type="button" class="send-whatsapp" onclick="inviaOrdineWhatsApp()">
+                        <i class="fab fa-whatsapp"></i> Invia su WhatsApp
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // CONFIGURAZIONE WHATSAPP
+        const CONFIG = {
+            whatsappNumber: "393757267715",
+            businessName: "ALL SHOP MILANO"
+        };
+
+        // NAVIGAZIONE TRA PAGINE
+        function showHomePage() {
+            document.getElementById('homePage').classList.remove('hidden');
+            document.getElementById('detailPage').classList.add('hidden');
+        }
+
+        function showProductDetail() {
+            document.getElementById('homePage').classList.add('hidden');
+            document.getElementById('detailPage').classList.remove('hidden');
+        }
+
+        // FUNZIONI MODAL WHATSAPP
+        function openWhatsAppModal() {
+            document.getElementById('whatsappModal').style.display = 'flex';
+        }
+
+        function closeWhatsAppModal() {
+            document.getElementById('whatsappModal').style.display = 'none';
+        }
+
+        function inviaOrdineWhatsApp() {
+            const nome = document.getElementById('nome').value;
+            const telefono = document.getElementById('telefono').value;
+            const indirizzo = document.getElementById('indirizzo').value;
+            const quantita = document.getElementById('quantita').value;
+            const note = document.getElementById('note').value;
+
+            if (!nome || !telefono || !indirizzo) {
+                alert("❌ Compila tutti i campi obbligatori!");
+                return;
+            }
+
+            let messaggio = `🛍️ *NUOVO ORDINE* - ${CONFIG.businessName}\n\n`;
+            messaggio += `👤 *Cliente:* ${nome}\n`;
+            messaggio += `📞 *Telefono:* ${telefono}\n`;
+            messaggio += `📍 *Indirizzo:* ${indirizzo}\n\n`;
+            messaggio += `📦 *DETTAGLIO ORDINE:*\n`;
+            messaggio += `   • Prodotto: AirPods Pro\n`;
+            messaggio += `   • Marca: Apple\n`;
+            messaggio += `   • Prezzo: €199,00\n`;
+            messaggio += `   • Quantità: ${quantita}\n`;
+            
+            if (note) {
+                messaggio += `   • Note: ${note}\n`;
+            }
+            
+            messaggio += `\n💰 *Totale: €${199 * parseInt(quantita)},00*\n`;
+            messaggio += `⏰ *Consegna:* Milano e provincia\n`;
+            messaggio += `💬 *Confermo l'ordine!*`;
+
+            const messaggioCodificato = encodeURIComponent(messaggio);
+            const whatsappUrl = `https://wa.me/${CONFIG.whatsappNumber}?text=${messaggioCodificato}`;
+            
+            window.open(whatsappUrl, '_blank');
+            closeWhatsAppModal();
+        }
+
+        // CHIUDI MODAL CLICCANDO FUORI
+        window.onclick = function(event) {
+            const modal = document.getElementById('whatsappModal');
+            if (event.target === modal) {
+                closeWhatsAppModal();
+            }
+        }
+
+        // INIZIALIZZA PAGINA PRINCIPALE
+        showHomePage();
+    </script>
+
+    <!-- Icone Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</body>
+</html>
